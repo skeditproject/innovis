@@ -1,0 +1,33 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+<%= render partial: "partials/header"%>
+<%= render partial: "partials/count_section"%>
+<%= render partial: "partials/service_section"%>
+<%= render partial: "partials/review_section"%>
+<%= render partial: "partials/team_section"%>
+<%= render partial: "partials/address_section"%>
+
+<script>
+  $(function() {
+    var owl = $(".owl-carousel");
+    owl.owlCarousel({
+      items: 2,
+      margin: 30,
+      loop: true,
+      nav: true,
+      autoplay: true,
+      autoplayTimeout: 2000,
+      responsive: {
+        0: {
+            items: 1
+        },
+        600: {
+            items: 2
+        },
+      }
+    });
+  });
+</script>

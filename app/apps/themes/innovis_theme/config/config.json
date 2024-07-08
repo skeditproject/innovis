@@ -1,0 +1,13 @@
+{
+  "name" : "Innovis Theme",
+  "description" : "",
+  "thumb" : "images/image.png",
+  "helpers": [
+    "Themes::InnovisTheme::MainHelper"
+  ],
+  "hooks": {
+    "on_active": ["innovis_theme_on_install_theme"],
+    "on_inactive": ["innovis_theme_on_uninstall_theme"],
+    "on_theme_settings": ["innovis_theme_settings"]
+  }
+}

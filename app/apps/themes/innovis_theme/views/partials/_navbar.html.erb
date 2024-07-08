@@ -1,0 +1,15 @@
+<section class="navbar-section px-0">
+  <nav class="navbar navbar-expand-lg navbar-light bg-navbar">
+    <div class="container-width d-flex justify-content-between align-items-center">
+      <a class="navbar-brand" href="<%= current_site.the_url %>">
+        <%= image_tag theme_asset_path("images/logo.png"), class: "logo-img" %>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <%= raw get_nav_menu('main_menu', 'navbar-nav') %>
+      </div>
+    </div>
+  </nav>
+</section>

@@ -1,0 +1,15 @@
+current directory: /home/developer/cms/Cms1/camaleon_cms/Innovis/vendor/bundle/ruby/3.0.0/gems/stringio-3.1.1/ext/stringio
+/home/developer/.rvm/rubies/ruby-3.0.0/bin/ruby -I /home/developer/.rvm/rubies/ruby-3.0.0/lib/ruby/3.0.0 -r ./siteconf20240705-125366-xu8tna.rb extconf.rb
+creating Makefile
+
+current directory: /home/developer/cms/Cms1/camaleon_cms/Innovis/vendor/bundle/ruby/3.0.0/gems/stringio-3.1.1/ext/stringio
+make "DESTDIR=" clean
+
+current directory: /home/developer/cms/Cms1/camaleon_cms/Innovis/vendor/bundle/ruby/3.0.0/gems/stringio-3.1.1/ext/stringio
+make "DESTDIR="
+compiling stringio.c
+linking shared-object stringio.so
+
+current directory: /home/developer/cms/Cms1/camaleon_cms/Innovis/vendor/bundle/ruby/3.0.0/gems/stringio-3.1.1/ext/stringio
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 stringio.so ./.gem.20240705-125366-m813ry
