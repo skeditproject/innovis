@@ -5,8 +5,5 @@
 
 // Camaleon CMS assets
 //= link camaleon-cms.js
-//= link_tree ../../apps/themes/camaleon_first/assets
-//= link_tree ../../apps/themes/default/assets
-//= link_tree ../../apps/themes/new/assets
 //= link_tree ../../apps/themes/innovis_theme/assets
 
