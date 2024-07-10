@@ -4524,12 +4524,12 @@ fieldset:disabled .btn {
 }
 
 .navbar-light .navbar-brand {
-    color: rgba(0, 0, 0);
+    color: rgba(0, 0, 0, 1);
 }
 
 .navbar-light .navbar-brand:hover,
 .navbar-light .navbar-brand:focus {
-    color: rgba(0, 0, 0);
+    color: rgba(0, 0, 0, 1);
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -4571,7 +4571,7 @@ fieldset:disabled .btn {
 .navbar-light .navbar-text a,
 .navbar-light .navbar-text a:hover,
 .navbar-light .navbar-text a:focus {
-    color: rgba(0, 0, 0);
+    color: rgba(0, 0, 0, 1);
 }
 
 .navbar-dark .navbar-brand {
