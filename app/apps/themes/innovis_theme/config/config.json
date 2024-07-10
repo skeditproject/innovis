@@ -1,6 +1,6 @@
 {
   "name" : "Innovis Theme",
-  "description" : "",
+  "description" : "This is Innovish theme rebuilt with Camaleon Cms",
   "thumb" : "images/image.png",
   "helpers": [
     "Themes::InnovisTheme::MainHelper"
