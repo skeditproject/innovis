@@ -71,5 +71,5 @@ test:
 production:
   <<: *default
   database: innovis_production
-  username: postgres
-  password: postgres
+  username: <%= ENV["INNOVIS_DATABASE_USERNAME"] %>
+  password: <%= ENV["INNOVIS_DATABASE_PASSWORD"] %>
