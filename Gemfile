@@ -50,6 +50,12 @@ group :development, :test do
 end
 
 group :development do
+  gem "capistrano",         require: false
+  gem "capistrano-rvm",     require: false
+  gem "capistrano-rails",   require: false
+  gem "capistrano-faster-assets", require: false
+  gem "capistrano-bundler", require: false
+  gem 'capistrano3-puma', ">= 5.2.0",   require: false
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 
