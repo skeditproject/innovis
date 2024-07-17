@@ -3,7 +3,7 @@ lock "~> 3.19.1"
 
 # require 'capistrano-db-tasks'
 
-set :repo_url,        'git@github.com:skeditproject/innovis.git'
+set :repo_url,        'https://github.com/skeditproject/innovis'
 set :application,     'innovis'
 set :user,            'deploy'
 set :puma_threads,    [4, 16]
@@ -39,7 +39,7 @@ set :keep_releases, 2
 # set :linked_files, %w{config/database.yml}
 # set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
-set :linked_files, %w{config/master.key config/database.yml}
+# set :linked_files, %w{config/master.key config/database.yml}
 set :linked_dirs,  %w{log tmp/pids tmp/sockets}
 
 namespace :puma do
@@ -58,7 +58,7 @@ namespace :deploy do
   desc "Make sure local git is in sync with remote."
   task :check_revision do
     on roles(:app) do
-      unless git rev-parse HEAD == git rev-parse origin/#{fetch(:branch)}
+      unless `git rev-parse HEAD == git rev-parse origin/#{fetch(:branch)}`
         puts "WARNING: HEAD is not the same as origin/#{fetch(:branch)}"
         puts "Run git push to sync changes."
         exit
