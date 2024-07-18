@@ -31,7 +31,7 @@ set :assets_dependencies, %w(app/assets lib/assets vendor/assets Gemfile.lock co
 #set :puma_enable_socket_service, true
 ## Defaults:
 # set :scm,           :git
-# set :branch,        :capistrano
+set :branch, 'main'
 # set :format,        :pretty
 # set :log_level,     :debug
 set :keep_releases, 2
@@ -59,7 +59,7 @@ namespace :deploy do
   desc "Make sure local git is in sync with remote."
   task :check_revision do
     on roles(:app) do
-      unless `git rev-parse HEAD == git rev-parse origin/#{fetch(:branch)}`
+      unless `git rev-parse HEAD` == `git rev-parse origin/#{fetch(:branch)}`
         puts "WARNING: HEAD is not the same as origin/#{fetch(:branch)}"
         puts "Run git push to sync changes."
         exit
