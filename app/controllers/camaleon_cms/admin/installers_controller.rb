@@ -8,7 +8,7 @@ module CamaleonCms
       layout 'camaleon_cms/login'
 
       def index
-        site = CamaleonCms::Site.create(name: "admin9")
+        site = CamaleonCms::Site.create(name: "Innovis")
         $current_site = CamaleonCms::Site.first.decorate
         @site ||= CamaleonCms::Site.new
         @site.slug = request.original_url.to_s.parse_domain
