@@ -500,8 +500,13 @@ video::-webkit-media-controls {
   color: #777777;
 }
 
+.address-text{
+  font-size: 16px;
+}
+
 .address-haeding {
   color: #A28655 !important;
+  font-size: 24px !important;
 }
 
 .footer-section {
