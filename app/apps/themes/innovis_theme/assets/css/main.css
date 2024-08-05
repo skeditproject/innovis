@@ -398,10 +398,6 @@ video::-webkit-media-controls {
   z-index: 999;
 }
 
-.profile-overlay:hover .profile-img {
-  filter: brightness(0.5);
-}
-
 .reviewer-post {
   font-size: 14px;
   color: #A28655;
@@ -409,13 +405,12 @@ video::-webkit-media-controls {
   font-weight: 700;
 }
 
-.review-img img {
-  max-width: 150px !important;
+.review-img .review-profile {
   border-radius: 50%;
-  border: 3px solid #00000010;
-  width: 100%;
-  aspect-ratio: 1/1;
-  object-fit: cover;
+  font-size: 48px;
+  font-weight: 900;
+  padding: 0px 19px;
+  background-color: #00000010;
 }
 
 .team-section {
@@ -696,7 +691,8 @@ video::-webkit-media-controls {
       display: none;
   }
   .service-header-content {
-      font-size: 44px;
+      font-size: 24px;
+      line-height: 1.4;
   }
   .mobile-team-card-container {
       display: block;
