@@ -9,6 +9,7 @@
 <%= render partial: "partials/review_section"%>
 <%= render partial: "partials/team_section"%>
 <%= render partial: "partials/address_section"%>
+<%= render partial: "partials/popup_message"%>
 
 <script>
   $(function() {
@@ -28,6 +29,17 @@
             items: 2
         },
       }
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    if (!sessionStorage.getItem('disclaimerAccepted')) {
+      document.getElementById('disclaimer-modal').style.display = 'flex';
+    }
+  
+    document.getElementById('agree-btn').addEventListener('click', function() {
+      document.getElementById('disclaimer-modal').style.display = 'none';
+      sessionStorage.setItem('disclaimerAccepted', 'true');
     });
   });
 </script>
