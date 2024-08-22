@@ -369,7 +369,7 @@ video::-webkit-media-controls {
 .reviewer-name::before {
   content: "";
   height: 2px;
-  width: 40px;
+  width: 150px;
   background-color: #A28655;
   position: absolute;
   top: -2px;
