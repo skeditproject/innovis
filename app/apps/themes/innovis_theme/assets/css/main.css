@@ -20,6 +20,15 @@
   font-style: normal;
 }
 
+.row{
+  margin-left: -15px !important;
+  margin-right: -15px !important;
+}
+
+body{
+  overflow-x: hidden;
+}
+
 video::-webkit-media-controls {
   display: none;
 }
