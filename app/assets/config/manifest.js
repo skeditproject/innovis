@@ -7,3 +7,4 @@
 //= link camaleon-cms.js
 //= link_tree ../../apps/themes/innovis_theme/assets
 
+//= link innovis_theme/favicon.ico
