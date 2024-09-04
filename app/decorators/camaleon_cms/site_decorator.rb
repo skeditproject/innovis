@@ -12,9 +12,9 @@ module CamaleonCms
       object.get_option('logo') || (default || h.asset_url('camaleon_cms/camaleon.png').to_s)
     end
 
+
     def the_icon
-      # binding.break
-      '/assets/innovis_theme/logo.ico'
+      h.asset_url('/assets/innovis_theme/logo.ico')
     end    
 
     # return all contents from this site registered for post_type = slug (filter visibility, hidden, expired, ...)
