@@ -1,8 +1,0 @@
-# encoding: utf-8
-ru:
-  routes:
-    group: группа
-    category: категория
-    tag: тег
-    search: поиск
-    profile: профиль

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_04_083228) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_05_110707) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,6 +31,20 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_04_083228) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
+
+  create_table "active_admin_comments", force: :cascade do |t|
+    t.string "namespace"
+    t.text "body"
+    t.string "resource_type"
+    t.bigint "resource_id"
+    t.string "author_type"
+    t.bigint "author_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author"
+    t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
+    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource"
   end
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -217,6 +231,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_04_083228) do
     t.index ["role"], name: "index_cama_users_on_role"
     t.index ["site_id"], name: "index_cama_users_on_site_id"
     t.index ["username"], name: "index_cama_users_on_username"
+  end
+
+  create_table "plugins_attacks", force: :cascade do |t|
+    t.string "path"
+    t.string "browser_key"
+    t.bigint "site_id"
+    t.datetime "created_at"
+    t.index ["browser_key"], name: "index_plugins_attacks_on_browser_key"
+    t.index ["path"], name: "index_plugins_attacks_on_path"
+    t.index ["site_id"], name: "index_plugins_attacks_on_site_id"
   end
 
   create_table "plugins_contact_forms", id: :serial, force: :cascade do |t|
