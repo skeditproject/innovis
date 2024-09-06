@@ -3,8 +3,5 @@
 //= link_tree ../../javascript .js
 //= link_tree ../../../vendor/javascript .js
 
-// Camaleon CMS assets
-//= link camaleon-cms.js
-//= link_tree ../../apps/themes/innovis_theme/assets
-
-//= link innovis_theme/logo.ico
+//= link application.css
+//= link application.js
