@@ -1,0 +1,12 @@
+<% count_sections = CountSection.all %>
+<section class="count-section px-0">
+  <div class="inner-count-div flex-wrap">
+    <% count_sections.each do |count| %>
+      <div>
+        <%= image_tag count.image %>
+        <div class="count-number"><%= count.number %></div>
+        <div class="count-text"><%= count.text %></div>
+      </div>
+    <% end %>
+  </div>
+</section>

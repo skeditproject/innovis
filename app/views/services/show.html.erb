@@ -1,0 +1,27 @@
+<% service_header = ServiceHeader.first %>
+<section class="header-section service-header px-0">
+  <%= image_tag service_header.image, class: "service-header-img" if service_header.image? %>
+  <div class="service-header-content">
+    <%= @service.title %>
+  </div>
+</section>
+
+<section class="service-section pt-5">
+  <div class="container">
+    <% @service.service_contents.each do |content| %>
+      <% if content.heading.present? %>
+        <h2 class="fw-bold fs-2 text-black"><%= content.heading %></h2>
+      <% end %>
+      <% if content.paragraph.present? %>
+        <div class="address-text"><%= content.paragraph %></div>
+      <% end %>
+      <% if content.list.present? %>
+        <ol class="address-text">
+          <% content.list.split("\n").each do |item| %>
+            <li><%= item %></li>
+          <% end %>
+        </ol>
+      <% end %>
+    <% end %>
+  </div>
+</section>

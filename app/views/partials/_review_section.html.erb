@@ -1,0 +1,27 @@
+<section class="review-section" style="background-image: url('<%= image_path 'review-bg.png'%>');">
+  <div class="inner-review">
+    <div class="section-heading">
+      <div>Testimonials</div>
+      <div class="text-white">Client Success Stories: Hear What Our Clients Have to Say!</div>
+    </div>
+    <div class="review-parent-div">
+      <div class="owl-carousel owl-theme d-block mt-5">
+        <% Testimonial.all.each do |testimonial| %>
+          <div class="item d-flex gap-3 align-items-center">
+            <div class="review-img">
+              <div class="review-profile"> 
+                <%= testimonial.initial %>
+              </div>
+            </div>
+            <div class="review-content">
+              <div class="review-text">
+                  <%= testimonial.review_text %>
+              </div>
+              <div class="reviewer-name"><%= testimonial.reviewer_name %></div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

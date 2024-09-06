@@ -1,0 +1,16 @@
+<section class="address-section" id="address_section">
+  <div class="inner-address-section">
+    <div class="section-heading">
+      <div>Our Location</div>
+      <div>GET In TOUCH with Team Innovis</div>
+    </div>
+    <div class="d-flex justify-content-between gap-sm-5 gap-3 mt-5 flex-wrap">
+      <% Address.all.each do |address| %>
+        <div class="address-div text-center">
+          <div class="mb-2 fw-bold address-heading"><%= address.city %></div>
+          <div class="address-text"><%= address.street %> <%= address.details %></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

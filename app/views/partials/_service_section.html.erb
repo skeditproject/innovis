@@ -1,0 +1,24 @@
+<section class="service-section" id="service-section">
+  <div class="section-heading">
+    <div>Bouquet of Services</div>
+    <div>We cater all the major verticals</div>
+  </div>
+  <div class="service-card-container landing-page">
+    <% Service.all.limit(8).each do |service| %>
+      <div class="service-card-div">
+        <div class="overflow-hidden service-img-parent">
+          <%= link_to image_tag(service.image, class: "service-card-img"), service_path(service.slug) %>
+        </div>
+        <div class="service-card-heading">
+          <%= link_to service.title, service_path(service.slug) %>
+        </div>
+        <div class="service-card-content">
+          <%= service.description %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="text-center">
+    <%= link_to 'View More', services_path, class: "custom-btn" %>
+  </div>
+</section>
