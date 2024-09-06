@@ -1,39 +1,41 @@
-<% footer_content = FooterContent.first %>
 <section class="footer-section" id="footer-section" style="background-image: url('<%= image_path 'footer-bg.png' %>');">
   <div class="inner-footer-section row ms-auto me-auto">
     <div class="col-12 col-sm-6 col-lg-4 footer-about">
       <div class="footer-heading">- Contact Us</div>
-      <div class="footer-contact"><strong>Call Us:</strong> <a href="tel: <%= footer_content.contact_phone %>"><%= footer_content.contact_phone %></a></div>
-      <div class="footer-contact"><strong>Reach Us At:</strong> <a href="mailto:<%= footer_content.contact_email %>"><%= footer_content.contact_email %></a></div>
+      <div class="footer-contact"><strong>Call Us:</strong> <a href="tel: +91-9144526224">+91-9144526224</a></div>
+      <div class="footer-contact"><strong>Reach Us At:</strong> <a href="mailto:info@innovispartners.com">info@innovispartners.com</a></div>
     </div>
     <div class="footer-list mt-4 mt-lg-0 d-flex justify-content-between row ms-auto me-auto col-12 col-sm-12 col-lg-8">
       <div class="col-12 col-sm-4 ps-0 pe-0">
         <div class="footer-heading">- Services</div>
-        <ul class="ps-4" style="list-style-type: none; padding-left: 0;">
-          <% footer_content.services.split("\n").each do |service| %>
-            <li><%= service %></li>
-          <% end %>
+        <ul class="ps-4", style="list-style-type: none; padding-left: 0;">
+          <li>Consulting</li>
+          <li>Litigation</li>
+          <li>Documentation</li>
+          <li>Arbitration</li>
         </ul>
       </div>
       <div class="col-12 col-sm-4 ps-0 pe-0">
         <div class="footer-heading">- Verticals</div>
-        <ul class="ps-4" style="list-style-type: none; padding-left: 0;">
-          <% footer_content.verticals.split("\n").each do |vertical| %>
-            <li><%= vertical %></li>
-          <% end %>
+        <ul class="ps-4", style="list-style-type: none; padding-left: 0;">
+          <li>Corporate</li>
+          <li>IPR</li>
+          <li>Civil</li>
+          <li>Criminal</li>
         </ul>
       </div>
       <div class="col-12 col-sm-4 ps-0 pe-0">
-        <div class="footer-heading">- Legal</div>
-        <ul class="ps-4" style="list-style-type: none; padding-left: 0;">
-          <% footer_content.legal.split("\n").each do |legal| %>
-            <li><%= legal %></li>
-          <% end %>
-        </ul>
+          <div class="footer-heading">- Legal</div>
+          <ul class="ps-4", style="list-style-type: none; padding-left: 0;">
+            <li>Terms</li>
+            <li>Legal</li>
+            <li>Privacy</li>
+            <li>License</li>
+          </ul>
       </div>
     </div>
   </div>
   <div class="bottom-footer-section">
-    <div>2024 © Law Consulting - Copyright All Rights Reserved</div>
+    <div>2024 © Law Consulting - Copyright All Rights Reserved</div>
   </div>
 </section>
