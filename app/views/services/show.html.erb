@@ -8,19 +8,9 @@
 
 <section class="service-section pt-5">
   <div class="container">
-    <% @service.service_contents.each do |content| %>
-      <% if content.heading.present? %>
-        <h2 class="fw-bold fs-2 text-black"><%= content.heading %></h2>
-      <% end %>
-      <% if content.paragraph.present? %>
-        <div class="address-text"><%= content.paragraph %></div>
-      <% end %>
-      <% if content.list.present? %>
-        <ol class="address-text">
-          <% content.list.split("\n").each do |item| %>
-            <li><%= item %></li>
-          <% end %>
-        </ol>
+    <% @service.service_contents.each do |service_content| %>
+      <% if service_content.content.present? %>
+        <h2 class="fw-bold fs-2 text-black"><%= raw(service_content.content) %></h2>
       <% end %>
     <% end %>
   </div>

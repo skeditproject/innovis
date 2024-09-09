@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   # get 'services/:id', to: 'services#show', as: 'service'
   # 
   resources :services, only: [:index, :show], param: :slug
+  resources :team_members, only: [:index]
 end

@@ -5,26 +5,12 @@
       <div>GET In TOUCH with Team Innovis</div>
     </div>
     <div class="d-flex justify-content-between gap-sm-5 gap-3 mt-5 flex-wrap">
-      <div class="address-div text-center">
-        <div class="mb-2 fw-bold address-haeding">Bhopal</div>
-        <div class="address-text">704, Vijay Stambh, Opp. Vishal Megamart Zone-I - M.P. Nagar, Bhopal - 462023 (M.P.) India</div>
-      </div>
-      <div class="address-div text-center">
-        <div class="mb-2 fw-bold address-haeding">Indore</div>
-        <div class="address-text">801, Victoria Urban, 12 Park Rd, Vallabh Nagar, Indore, (M.P.) India</div>
-      </div>
-      <div class="address-div text-center">
-        <div class="mb-2 fw-bold address-haeding">Bengaluru</div>
-        <div class="address-text">Golden Square Services And Virtual offices, Vittal Mallya Road, Bengaluru, Karnatak 560001</div>
-      </div>
-      <div class="address-div text-center">
-        <div class="mb-2 fw-bold address-haeding">Mumbai</div>
-        <div class="address-text">206, 2nd floor, Aqua, Church gate Chambers, 5 New Marine Lines, Mumbai 400020</div>
-      </div>
-      <div class="address-div text-center">
-        <div class="mb-2 fw-bold address-haeding">Delhi</div>
-        <div class="address-text">D-19 LGF, Kailash Colony, Greater Kailash I, New Delhi</div>
-      </div>
+      <% Address.all.each do |address| %>
+        <div class="address-div text-center">
+          <div class="mb-2 fw-bold address-heading"><%= address.city %></div>
+          <div class="address-text"><%= address.street %> <%= address.details %></div>
+        </div>
+      <% end %>
     </div>
   </div>
 </section>

@@ -28,17 +28,15 @@
 
   <!-- Mobile version -->
   <div class="mobile-team-card-container mt-3">
-    <div class="d-flex gap-3 align-items-center justify-content-center px-3 w-full">
-      <% @team_members.first(3).each do |member| %>
+    <div class="d-flex flex-wrap gap-3 align-items-center justify-content-center px-3 w-full">
+      <% @team_members.each do |member| %>
         <div class="mobile-profile-div text-center">
-          <%= image_tag(member.image) %>
+          <%= image_tag(member.image, class: "mobile-profile-img") %>
           <div class="mobile-profile-name mt-2 mb-1 px-2">Adv <%= member.name %></div>
           <div class="mobile-profile-post px-2 pb-2"><%= member.designation %></div>
         </div>
       <% end %>
     </div>
-    <div class="text-center mt-4">
-      <%= link_to "View More", team_members_path, class: "custom-btn" %>
-    </div>
   </div>
 </section>
+
