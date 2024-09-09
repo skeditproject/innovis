@@ -22,6 +22,10 @@ gem "turbo-rails"
 
 gem "activeadmin"
 
+gem "devise"
+
+gem "friendly_id"
+
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 
@@ -75,3 +79,6 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+
+gem 'activeadmin_quill_editor'

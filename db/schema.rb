@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_05_110707) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_06_072919) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -75,187 +75,336 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_05_110707) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "cama_comments", id: :serial, force: :cascade do |t|
-    t.string "author"
-    t.string "author_email"
-    t.string "author_url"
-    t.string "author_IP"
+  create_table "addresses", force: :cascade do |t|
+    t.string "city"
+    t.string "street"
+    t.text "details"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "admin_users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_admin_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "count_sections", force: :cascade do |t|
+    t.string "image"
+    t.string "number"
+    t.string "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "footer_contents", force: :cascade do |t|
+    t.string "contact_phone"
+    t.string "contact_email"
+    t.text "services"
+    t.text "verticals"
+    t.text "legal"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "headers", force: :cascade do |t|
+    t.string "video_url"
+    t.string "title"
+    t.string "subtitle"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "navbars", force: :cascade do |t|
+    t.string "title"
+    t.string "link"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "logo"
+  end
+
+  create_table "service_contents", force: :cascade do |t|
+    t.bigint "service_id", null: false
     t.text "content"
-    t.string "approved", default: "pending"
-    t.string "agent"
-    t.string "typee"
-    t.integer "comment_parent"
-    t.integer "post_id"
-    t.integer "user_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["approved"], name: "index_cama_comments_on_approved"
-    t.index ["comment_parent"], name: "index_cama_comments_on_comment_parent"
-    t.index ["post_id"], name: "index_cama_comments_on_post_id"
-    t.index ["user_id"], name: "index_cama_comments_on_user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["service_id"], name: "index_service_contents_on_service_id"
   end
 
-  create_table "cama_custom_fields", id: :serial, force: :cascade do |t|
-    t.string "object_class"
-    t.string "name"
-    t.string "slug"
-    t.integer "objectid"
-    t.integer "parent_id"
-    t.integer "field_order"
-    t.integer "count", default: 0
-    t.boolean "is_repeat", default: false
+  create_table "service_headers", force: :cascade do |t|
+    t.string "title"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.string "title"
     t.text "description"
-    t.string "status"
-    t.index ["object_class"], name: "index_cama_custom_fields_on_object_class"
-    t.index ["objectid"], name: "index_cama_custom_fields_on_objectid"
-    t.index ["parent_id"], name: "index_cama_custom_fields_on_parent_id"
-    t.index ["slug"], name: "index_cama_custom_fields_on_slug"
-  end
-
-  create_table "cama_custom_fields_relationships", id: :serial, force: :cascade do |t|
-    t.integer "objectid"
-    t.integer "custom_field_id"
-    t.integer "term_order"
-    t.string "object_class"
-    t.text "value"
-    t.string "custom_field_slug"
-    t.integer "group_number", default: 0
-    t.index ["custom_field_id"], name: "index_cama_custom_fields_relationships_on_custom_field_id"
-    t.index ["custom_field_slug"], name: "index_cama_custom_fields_relationships_on_custom_field_slug"
-    t.index ["object_class"], name: "index_cama_custom_fields_relationships_on_object_class"
-    t.index ["objectid"], name: "index_cama_custom_fields_relationships_on_objectid"
-  end
-
-  create_table "cama_media", id: :serial, force: :cascade do |t|
-    t.integer "site_id"
-    t.string "name"
-    t.boolean "is_folder", default: false
-    t.string "folder_path"
-    t.string "file_size"
-    t.string "dimension", default: ""
-    t.string "file_type"
-    t.string "url"
-    t.string "thumb"
-    t.boolean "is_public", default: true
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-    t.index ["folder_path"], name: "index_cama_media_on_folder_path"
-    t.index ["is_folder"], name: "index_cama_media_on_is_folder"
-    t.index ["name"], name: "index_cama_media_on_name"
-    t.index ["site_id"], name: "index_cama_media_on_site_id"
-  end
-
-  create_table "cama_metas", id: :serial, force: :cascade do |t|
-    t.string "key"
-    t.text "value"
-    t.integer "objectid"
-    t.string "object_class"
-    t.index ["key"], name: "index_cama_metas_on_key"
-    t.index ["object_class"], name: "index_cama_metas_on_object_class"
-    t.index ["objectid"], name: "index_cama_metas_on_objectid"
-  end
-
-  create_table "cama_posts", id: :serial, force: :cascade do |t|
-    t.text "title"
-    t.text "slug"
-    t.text "content"
-    t.text "content_filtered"
-    t.string "status", default: "published"
-    t.datetime "published_at", precision: nil
-    t.integer "post_parent"
-    t.string "visibility", default: "public"
-    t.text "visibility_value"
-    t.string "post_class", default: "Post"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.integer "user_id"
-    t.integer "post_order", default: 0
-    t.integer "taxonomy_id"
-    t.boolean "is_feature", default: false
-    t.index ["post_class"], name: "index_cama_posts_on_post_class"
-    t.index ["post_parent"], name: "index_cama_posts_on_post_parent"
-    t.index ["slug"], name: "index_cama_posts_on_slug"
-    t.index ["status"], name: "index_cama_posts_on_status"
-    t.index ["user_id"], name: "index_cama_posts_on_user_id"
-  end
-
-  create_table "cama_term_relationships", id: :serial, force: :cascade do |t|
-    t.integer "objectid"
-    t.integer "term_order"
-    t.integer "term_taxonomy_id"
-    t.index ["objectid"], name: "index_cama_term_relationships_on_objectid"
-    t.index ["term_order"], name: "index_cama_term_relationships_on_term_order"
-    t.index ["term_taxonomy_id"], name: "index_cama_term_relationships_on_term_taxonomy_id"
-  end
-
-  create_table "cama_term_taxonomy", id: :serial, force: :cascade do |t|
-    t.string "taxonomy"
-    t.text "description"
-    t.integer "parent_id"
-    t.integer "count"
-    t.text "name"
+    t.string "image"
+    t.string "link"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "slug"
-    t.integer "term_group"
-    t.integer "term_order"
-    t.string "status"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.integer "user_id"
-    t.index ["parent_id"], name: "index_cama_term_taxonomy_on_parent_id"
-    t.index ["slug"], name: "index_cama_term_taxonomy_on_slug"
-    t.index ["taxonomy"], name: "index_cama_term_taxonomy_on_taxonomy"
-    t.index ["term_order"], name: "index_cama_term_taxonomy_on_term_order"
-    t.index ["user_id"], name: "index_cama_term_taxonomy_on_user_id"
+    t.index ["slug"], name: "index_services_on_slug", unique: true
   end
 
-  create_table "cama_users", id: :serial, force: :cascade do |t|
-    t.string "username"
-    t.string "role", default: "client"
+  create_table "spina_accounts", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "postal_code"
+    t.string "city"
+    t.string "phone"
     t.string "email"
-    t.string "slug"
-    t.string "password_digest"
-    t.string "auth_token"
-    t.string "password_reset_token"
-    t.integer "parent_id"
-    t.datetime "password_reset_sent_at", precision: nil
-    t.datetime "last_login_at", precision: nil
+    t.text "preferences"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.integer "site_id", default: -1
-    t.string "confirm_email_token"
-    t.datetime "confirm_email_sent_at", precision: nil
-    t.boolean "is_valid_email", default: true
-    t.string "first_name"
-    t.string "last_name"
-    t.index ["email"], name: "index_cama_users_on_email"
-    t.index ["role"], name: "index_cama_users_on_role"
-    t.index ["site_id"], name: "index_cama_users_on_site_id"
-    t.index ["username"], name: "index_cama_users_on_username"
+    t.boolean "robots_allowed", default: false
+    t.jsonb "json_attributes"
   end
 
-  create_table "plugins_attacks", force: :cascade do |t|
-    t.string "path"
-    t.string "browser_key"
-    t.bigint "site_id"
-    t.datetime "created_at"
-    t.index ["browser_key"], name: "index_plugins_attacks_on_browser_key"
-    t.index ["path"], name: "index_plugins_attacks_on_path"
-    t.index ["site_id"], name: "index_plugins_attacks_on_site_id"
+  create_table "spina_attachment_collections", id: :serial, force: :cascade do |t|
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
-  create_table "plugins_contact_forms", id: :serial, force: :cascade do |t|
-    t.integer "site_id"
-    t.integer "count"
-    t.integer "parent_id"
+  create_table "spina_attachment_collections_attachments", id: :serial, force: :cascade do |t|
+    t.integer "attachment_collection_id"
+    t.integer "attachment_id"
+  end
+
+  create_table "spina_attachments", id: :serial, force: :cascade do |t|
+    t.string "file"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+  end
+
+  create_table "spina_image_collections", force: :cascade do |t|
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+  end
+
+  create_table "spina_image_collections_images", id: :serial, force: :cascade do |t|
+    t.integer "image_collection_id"
+    t.integer "image_id"
+    t.integer "position"
+    t.index ["image_collection_id"], name: "index_spina_image_collections_images_on_image_collection_id"
+    t.index ["image_id"], name: "index_spina_image_collections_images_on_image_id"
+  end
+
+  create_table "spina_images", force: :cascade do |t|
+    t.integer "media_folder_id"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.index ["media_folder_id"], name: "index_spina_images_on_media_folder_id"
+  end
+
+  create_table "spina_layout_parts", id: :serial, force: :cascade do |t|
+    t.string "title"
     t.string "name"
-    t.string "slug"
-    t.text "description"
-    t.text "value"
-    t.text "settings"
+    t.integer "layout_partable_id"
+    t.string "layout_partable_type"
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
+    t.integer "account_id"
+  end
+
+  create_table "spina_line_translations", id: :serial, force: :cascade do |t|
+    t.integer "spina_line_id", null: false
+    t.string "locale", null: false
+    t.string "content"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.index ["locale"], name: "index_spina_line_translations_on_locale"
+    t.index ["spina_line_id"], name: "index_spina_line_translations_on_spina_line_id"
+  end
+
+  create_table "spina_lines", id: :serial, force: :cascade do |t|
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
+  end
+
+  create_table "spina_media_folders", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+  end
+
+  create_table "spina_navigation_items", id: :serial, force: :cascade do |t|
+    t.integer "page_id", null: false
+    t.integer "navigation_id", null: false
+    t.integer "position", default: 0, null: false
+    t.string "ancestry"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
+    t.index ["page_id", "navigation_id"], name: "index_spina_navigation_items_on_page_id_and_navigation_id", unique: true
+  end
+
+  create_table "spina_navigations", id: :serial, force: :cascade do |t|
+    t.string "name", null: false
+    t.string "label", null: false
+    t.boolean "auto_add_pages", default: false, null: false
+    t.integer "position", default: 0, null: false
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
+    t.index ["name"], name: "index_spina_navigations_on_name", unique: true
+  end
+
+  create_table "spina_options", id: :serial, force: :cascade do |t|
+    t.string "value"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+  end
+
+  create_table "spina_page_parts", id: :serial, force: :cascade do |t|
+    t.string "title"
+    t.string "name"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.integer "page_id"
+    t.integer "page_partable_id"
+    t.string "page_partable_type"
+  end
+
+  create_table "spina_page_translations", id: :serial, force: :cascade do |t|
+    t.integer "spina_page_id", null: false
+    t.string "locale", null: false
+    t.string "title"
+    t.string "menu_title"
+    t.string "description"
+    t.string "seo_title"
+    t.string "materialized_path"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.string "url_title"
+    t.index ["locale"], name: "index_spina_page_translations_on_locale"
+    t.index ["spina_page_id"], name: "index_spina_page_translations_on_spina_page_id"
+  end
+
+  create_table "spina_pages", id: :serial, force: :cascade do |t|
+    t.boolean "show_in_menu", default: true
+    t.string "slug"
+    t.boolean "deletable", default: true
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.string "name"
+    t.boolean "skip_to_first_child", default: false
+    t.string "view_template"
+    t.string "layout_template"
+    t.boolean "draft", default: false
+    t.string "link_url"
+    t.string "ancestry"
+    t.integer "position"
+    t.boolean "active", default: true
+    t.integer "resource_id"
+    t.jsonb "json_attributes"
+    t.index ["resource_id"], name: "index_spina_pages_on_resource_id"
+  end
+
+  create_table "spina_resources", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "label"
+    t.string "view_template"
+    t.string "order_by"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.jsonb "slug"
+  end
+
+  create_table "spina_rewrite_rules", id: :serial, force: :cascade do |t|
+    t.string "old_path"
+    t.string "new_path"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
+  end
+
+  create_table "spina_settings", id: :serial, force: :cascade do |t|
+    t.string "plugin"
+    t.jsonb "preferences", default: {}
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.index ["plugin"], name: "index_spina_settings_on_plugin"
+  end
+
+  create_table "spina_structure_items", id: :serial, force: :cascade do |t|
+    t.integer "structure_id"
+    t.integer "position"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
+    t.index ["structure_id"], name: "index_spina_structure_items_on_structure_id"
+  end
+
+  create_table "spina_structure_parts", id: :serial, force: :cascade do |t|
+    t.integer "structure_item_id"
+    t.integer "structure_partable_id"
+    t.string "structure_partable_type"
+    t.string "name"
+    t.string "title"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
+    t.index ["structure_item_id"], name: "index_spina_structure_parts_on_structure_item_id"
+    t.index ["structure_partable_id"], name: "index_spina_structure_parts_on_structure_partable_id"
+  end
+
+  create_table "spina_structures", id: :serial, force: :cascade do |t|
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
+  end
+
+  create_table "spina_text_translations", id: :serial, force: :cascade do |t|
+    t.integer "spina_text_id", null: false
+    t.string "locale", null: false
+    t.text "content"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.index ["locale"], name: "index_spina_text_translations_on_locale"
+    t.index ["spina_text_id"], name: "index_spina_text_translations_on_spina_text_id"
+  end
+
+  create_table "spina_texts", id: :serial, force: :cascade do |t|
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
+  end
+
+  create_table "spina_users", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.boolean "admin", default: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.datetime "last_logged_in", precision: nil
+    t.string "password_reset_token"
+    t.datetime "password_reset_sent_at", precision: nil
+  end
+
+  create_table "team_members", force: :cascade do |t|
+    t.string "name"
+    t.string "designation"
+    t.string "image"
+    t.string "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "testimonials", force: :cascade do |t|
+    t.string "profile_image"
+    t.string "reviewer_name"
+    t.text "review_text"
+    t.string "initial"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "service_contents", "services"
 end

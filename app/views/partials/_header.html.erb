@@ -1,11 +1,16 @@
+<% header = Header.first %>
 <section class="header-section px-0">
   <video autoplay loop muted playsinline preload="auto" class="header-video">
-    <source type="video/mp4" src="<%= asset_path('header-law.mp4') %>">
-  </video>  
+    <% if header.video.attached? %>
+      <source type="video/mp4" src="<%= url_for(header.video) %>">
+    <% else %>
+      <source type="video/mp4" src="<%= asset_path('header-law.mp4') %>">
+    <% end %>
+  </video>
   <div class="overlay"></div>
   <div class="header-content">
-    <div>Innovis Law Partners</div>
-    <div>Everything in Legal solutions</div>
-    <div>IPR | Corporate | Civil | Criminal</div>
+    <div><%= header.title %></div>
+    <div><%= header.subtitle %></div>
+    <div><%= header.description %></div>
   </div>
 </section>

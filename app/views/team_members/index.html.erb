@@ -1,0 +1,42 @@
+<section class="team-section" id="team_section">
+  <div class="section-heading">
+    <div>Meet Our Expert</div>
+    <div>Our Committed and Talented Young Energetic Team</div>
+  </div>
+
+  <div class="team-card-container mt-3">
+    <% @team_members.in_groups_of(5, false).each_with_index do |group, index| %>
+      <div class="profile-div-1 d-flex gap-2 justify-content-between align-items-end position-relative">
+        <% group.each do |member| %>
+          <div class="profile-overlay position-relative">
+            <%= image_tag(member.image, class: "profile-img") %>
+            <div class="text-center profile-content mt-2">
+              <div>Adv <br /><%= member.name %></div>
+              <%= image_tag("arrow.png", class: "arrow-img") %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="team-rectangle-div d-flex gap-2 justify-content-between align-items-center">
+        <% group.each do |member| %>
+          <div><%= member.designation %></div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Mobile version -->
+  <div class="mobile-team-card-container mt-3">
+    <div class="d-flex flex-wrap gap-3 align-items-center justify-content-center px-3 w-full">
+      <% @team_members.each do |member| %>
+        <div class="mobile-profile-div text-center">
+          <%= image_tag(member.image, class: "mobile-profile-img") %>
+          <div class="mobile-profile-name mt-2 mb-1 px-2">Adv <%= member.name %></div>
+          <div class="mobile-profile-post px-2 pb-2"><%= member.designation %></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+

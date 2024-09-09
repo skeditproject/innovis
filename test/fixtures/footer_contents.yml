@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  contact_phone: MyString
+  contact_email: MyString
+  services: MyText
+  verticals: MyText
+  legal: MyText
+
+two:
+  contact_phone: MyString
+  contact_email: MyString
+  services: MyText
+  verticals: MyText
+  legal: MyText

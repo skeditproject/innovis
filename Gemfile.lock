@@ -60,6 +60,8 @@ GEM
       kaminari (>= 1.2.1)
       railties (>= 6.1)
       ransack (>= 4.0)
+    activeadmin_quill_editor (1.2.0)
+      activeadmin (>= 2.9, < 4)
     activejob (7.1.4)
       activesupport (= 7.1.4)
       globalid (>= 0.3.6)
@@ -93,6 +95,7 @@ GEM
       activesupport (>= 3.0.0)
       ruby2_keywords (>= 0.0.2)
     base64 (0.2.0)
+    bcrypt (3.1.20)
     bigdecimal (3.1.8)
     bindex (0.8.1)
     bootsnap (1.18.4)
@@ -134,14 +137,20 @@ GEM
     debug (1.9.2)
       irb (~> 1.10)
       reline (>= 0.3.8)
+    devise (4.9.4)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0)
+      responders
+      warden (~> 1.2.3)
     drb (2.2.1)
     erubi (1.13.0)
     ffi (1.17.0)
-    ffi (1.17.0-arm64-darwin)
-    ffi (1.17.0-x86_64-darwin)
     formtastic (5.0.0)
       actionpack (>= 6.0.0)
     formtastic_i18n (0.7.0)
+    friendly_id (5.5.1)
+      activerecord (>= 4.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     has_scope (0.8.2)
@@ -211,12 +220,9 @@ GEM
       net-protocol
     net-ssh (7.2.3)
     nio4r (2.7.3)
-    nokogiri (1.16.7-arm64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.16.7-x86_64-darwin)
-      racc (~> 1.4)
     nokogiri (1.16.7-x86_64-linux)
       racc (~> 1.4)
+    orm_adapter (0.5.0)
     pg (1.5.7)
     psych (5.1.2)
       stringio
@@ -319,6 +325,8 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    warden (1.2.9)
+      rack (>= 2.0.9)
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -334,12 +342,11 @@ GEM
     zeitwerk (2.6.18)
 
 PLATFORMS
-  arm64-darwin
-  x86_64-darwin
   x86_64-linux
 
 DEPENDENCIES
   activeadmin
+  activeadmin_quill_editor
   bootsnap
   capistrano
   capistrano-bundler
@@ -349,6 +356,8 @@ DEPENDENCIES
   capistrano3-puma (>= 5.2.0)
   capybara
   debug
+  devise
+  friendly_id
   importmap-rails
   jbuilder
   pg (~> 1.1)
