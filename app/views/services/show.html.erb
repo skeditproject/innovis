@@ -10,7 +10,7 @@
   <div class="container">
     <% @service.service_contents.each do |service_content| %>
       <% if service_content.content.present? %>
-        <h2 class="fw-bold fs-2 text-black"><%= raw(service_content.content) %></h2>
+        <%= raw(service_content.content) %>
       <% end %>
     <% end %>
   </div>

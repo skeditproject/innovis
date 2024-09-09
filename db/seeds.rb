@@ -41,7 +41,7 @@
 # Navbar.create!(title: 'Team', link: '#team_section', position: 4)
 # Navbar.create!(title: 'Contact Us', link: '#footer-section', position: 5)
 
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+# AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
 
 
 # Address.create!(

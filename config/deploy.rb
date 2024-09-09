@@ -40,7 +40,8 @@ set :keep_releases, 2
 # set :linked_files, %w{config/database.yml}
 # set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
-# set :linked_files, %w{config/master.key config/database.yml}
+set :linked_files, %w{config/master.key config/database.yml}
+append :linked_dirs, 'log', 'storage', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system', 'public/uploads', 'node_modules'
 set :linked_dirs,  %w{log tmp/pids tmp/sockets}
 
 namespace :puma do
