@@ -6,7 +6,6 @@ ActiveAdmin.register BlogHeader do
       f.input :title
       f.input :subtitle
       f.input :description
-      f.input :video, as: :file
     end
     f.actions
   end
@@ -17,13 +16,6 @@ ActiveAdmin.register BlogHeader do
     column :title
     column :subtitle
     column :description
-    column :video do |header|
-      if header.video.attached?
-        video_tag url_for(header.video), controls: true, size: "100x100"
-      else
-        status_tag('No Video', :warning)
-      end
-    end
     actions
   end
 
@@ -32,13 +24,6 @@ ActiveAdmin.register BlogHeader do
       row :title
       row :subtitle
       row :description
-      row :video do |header|
-        if header.video.attached?
-          video_tag url_for(header.video), controls: true, size: "300x200"
-        else
-          status_tag('No Video', :warning)
-        end
-      end
     end
   end
 
