@@ -15,4 +15,8 @@ Rails.application.routes.draw do
   # 
   resources :services, only: [:index, :show], param: :slug
   resources :team_members, only: [:index]
+  resources :blogs,only: [:index]
+  get 'contact', to: 'blogs#contact', as: 'contact'
+  post 'send_message', to: 'blogs#send_message', as: 'send_message'
+  resources :blogs, param: :slug, only: [:index, :show]
 end

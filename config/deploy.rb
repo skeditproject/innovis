@@ -27,6 +27,10 @@ set :puma_worker_timeout, 120
 set :puma_init_active_record, true  # Change to false when not using ActiveRecord
 set :rails_env, "production"
 set :assets_dependencies, %w(app/assets lib/assets vendor/assets Gemfile.lock config/routes.rb)
+set :nginx_server_name, "www.innovislawpartners.com"
+set :nginx_use_ssl, true
+set :nginx_ssl_certificate, "/etc/letsencrypt/live/www.innovislawpartners.com/fullchain.pem"
+set :nginx_ssl_certificate_key, "/etc/letsencrypt/live/www.innovislawpartners.com/privkey.pem"
 
 #set :puma_enable_socket_service, true
 ## Defaults:

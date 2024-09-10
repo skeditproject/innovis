@@ -1,0 +1,25 @@
+<section class="service-section" id="service-section">
+  <div class="section-heading text-center">
+    <h2>My Blog</h2>
+    <p>We cater all the major verticals</p>
+  </div>
+  <div class="service-card-container landing-page">
+    <% BlogPost.all.each do |post| %>
+      <div class="service-card-div">
+        <div class="overflow-hidden service-img-parent">
+          <% if post.image.attached? %>
+            <%= link_to image_tag(post.image.variant(resize_to_limit: [400, 300]), class: "service-card-img"), blog_path(post.slug) %>
+          <% else %>
+            <%= link_to image_tag('default-image.jpg', class: "service-card-img"), blog_path(post.slug) %>
+          <% end %>
+        </div>
+        <div class="service-card-heading">
+          <%= link_to post.title, blog_path(post.slug) %>
+        </div>
+        <div class="service-card-content">
+          <%= raw(post.content) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>
