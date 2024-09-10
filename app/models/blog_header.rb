@@ -1,4 +1,5 @@
 class BlogHeader < ApplicationRecord
+  has_one_attached :video
 
   validates :title, presence: true
   validates :subtitle, presence: true
@@ -10,6 +11,6 @@ class BlogHeader < ApplicationRecord
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    ["created_at", "description", "id", "id_value", "subtitle", "title", "updated_at"]
+    ["created_at", "description", "id", "id_value", "subtitle", "title", "updated_at", "video_url"]
   end
 end

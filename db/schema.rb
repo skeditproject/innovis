@@ -96,6 +96,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_10_114913) do
   end
 
   create_table "blog_headers", force: :cascade do |t|
+    t.string "video_url"
     t.string "title"
     t.string "subtitle"
     t.text "description"

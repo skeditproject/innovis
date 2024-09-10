@@ -1,4 +1,3 @@
-# app/admin/headers.rb
 ActiveAdmin.register Header do
   permit_params :title, :subtitle, :description, :video
 

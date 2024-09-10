@@ -2,37 +2,16 @@ ActiveAdmin.register BlogHeader do
   permit_params :title, :subtitle, :description, :video
 
   form do |f|
-    f.inputs 'Blog Header Details' do
-      f.input :title
-      f.input :subtitle
-      f.input :description
+    f.inputs 'Header Content' do
+      f.input :title, as: :string, label: 'Title'
+      f.input :subtitle, as: :string, label: 'Subtitle'
+      f.input :description, as: :string, label: 'Description'
+      f.input :video, as: :file, hint: f.object.video.attached? ? video_tag(f.object.video, controls: true, width: '300') : content_tag(:span, 'No video uploaded')
     end
     f.actions
   end
 
-  index do
-    selectable_column
-    id_column
-    column :title
-    column :subtitle
-    column :description
-    actions
-  end
-
-  show do
-    attributes_table do
-      row :title
-      row :subtitle
-      row :description
-    end
-  end
-
-  controller do
-    def update
-      if params[:blog_header][:video].present?
-        resource.video.attach(params[:blog_header][:video])
-      end
-      super
-    end
-  end
+  filter :title
+  filter :subtitle
+  filter :description
 end
