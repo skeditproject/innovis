@@ -85,4 +85,4 @@ end
 
 
 gem 'activeadmin_quill_editor'
-gem "aws-sdk-s3", "~> 1.161"
+gem "aws-sdk-s3", require: false

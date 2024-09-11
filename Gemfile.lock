@@ -385,7 +385,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   activeadmin_quill_editor
-  aws-sdk-s3 (~> 1.161)
+  aws-sdk-s3
   bootsnap
   capistrano
   capistrano-bundler
