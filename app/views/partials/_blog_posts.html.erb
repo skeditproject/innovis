@@ -1,30 +1,24 @@
 <section class="service-section" id="service-section">
   <div class="section-heading text-center">
-    <h2> INNOVIS POSTS</h2>
+    <h2>INNOVIS POSTS</h2>
   </div>
-  <div class="container">
-    <div class="row">
-      <% BlogPost.all.each do |post| %>
-        <div class="col-md-4">
-          <div class="service-card-div mb-4">
-            <div class="overflow-hidden service-img-parent">
-              <% if post.image.attached? %>
-                <%= link_to image_tag(post.image.variant(resize_to_limit: [400, 300]), class: "service-card-img", style: "height: 300px; object-fit: cover; width: 100%;"), blog_path(post.slug) %>
-              <% else %>
-                <%= link_to image_tag('service-7.png', class: "service-card-img", style: "height: 300px; object-fit: cover; width: 100%;"), blog_path(post.slug) %>
-              <% end %>
-            </div>
-
-            <div class="service-card-heading text-center mt-2">
-              <%= link_to post.title, blog_path(post.slug), class: "text-decoration-none" %>
-            </div>
-
-            <div class="service-card-content mt-2">
-              <%= raw(post.content.truncate(100)) %>
-            </div>
-          </div>
+  <div class="service-card-container landing-page">
+    <% BlogPost.all.each do |post| %>
+      <div class="service-card-div">
+        <div class="overflow-hidden service-img-parent">
+          <% if post.image.attached? %>
+            <%= link_to image_tag(post.image.variant(resize_to_limit: [400, 300]), class: "service-card-img"), blog_path(post.slug) %>
+          <% else %>
+            <%= link_to image_tag('default-image.jpg', class: "service-card-img"), blog_path(post.slug) %>
+          <% end %>
         </div>
-      <% end %>
-    </div>
+        <div class="service-card-heading">
+          <%= link_to post.title, blog_path(post.slug) %>
+        </div>
+        <div class="service-card-content">
+          <%= raw(post.content) %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </section>

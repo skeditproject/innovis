@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
   def index
-    @blog_posts = BlogPost.all.limit(8)
+    @blog_posts = BlogPost.all
   end
 
   def show
