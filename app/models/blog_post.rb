@@ -4,8 +4,8 @@ class BlogPost < ApplicationRecord
 
   before_save :set_slug
 
-  validates :title, :content, presence: true
-  validates :slug, uniqueness: true
+  validates :title, :slug, presence: true, uniqueness: true
+  validates :content, presence: true
 
   has_one_attached :image
 

@@ -96,7 +96,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_10_114913) do
   end
 
   create_table "blog_headers", force: :cascade do |t|
-    t.string "video_url"
     t.string "title"
     t.string "subtitle"
     t.text "description"
@@ -107,7 +106,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_10_114913) do
   create_table "blog_posts", force: :cascade do |t|
     t.string "title"
     t.text "content"
-    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
@@ -123,7 +121,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_10_114913) do
   end
 
   create_table "count_sections", force: :cascade do |t|
-    t.string "image"
     t.string "number"
     t.string "text"
     t.datetime "created_at", null: false
@@ -141,7 +138,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_10_114913) do
   end
 
   create_table "headers", force: :cascade do |t|
-    t.string "video_url"
     t.string "title"
     t.string "subtitle"
     t.string "description"

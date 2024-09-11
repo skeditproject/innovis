@@ -2,7 +2,7 @@ class Header < ApplicationRecord
     has_one_attached :video
 
   def self.ransackable_attributes(auth_object = nil)
-    ["created_at", "description", "id", "id_value", "subtitle", "title", "updated_at", "video_url"]
+    ["created_at", "description", "id", "id_value", "subtitle", "title", "updated_at"]
   end
 
   def self.ransackable_associations(auth_object = nil)

@@ -3,7 +3,11 @@
   <div class="inner-count-div flex-wrap">
     <% count_sections.each do |count| %>
       <div>
-        <%= image_tag count.image %>
+        <% if count.image.attached? %>
+          <%= image_tag count.image, style: 'max-width: 100px; max-height: 100px;' %>
+        <% else %>
+          <%= image_tag 'count-1.png', style: 'max-width: 100px; max-height: 100px;' %>
+        <% end %>
         <div class="count-number"><%= count.number %></div>
         <div class="count-text"><%= count.text %></div>
       </div>
