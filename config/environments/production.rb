@@ -18,7 +18,7 @@ Rails.application.configure do
 
   # Ensures that a master key has been made available in ENV["RAILS_MASTER_KEY"], config/master.key, or an environment
   # key such as config/credentials/production.key. This key is used to decrypt credentials (and other encrypted files).
-  # config.require_master_key = true
+  config.require_master_key = true
 
   # Disable serving static files from `public/`, relying on NGINX/Apache to do so instead.
   # config.public_file_server.enabled = false
@@ -37,7 +37,7 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = "X-Accel-Redirect" # for NGINX
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
+  config.active_storage.service = :amazon
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
@@ -83,7 +83,7 @@ Rails.application.configure do
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
 
-  config.active_storage.variant_processor = :mini_magick
+  # config.active_storage.variant_processor = :mini_magick
 
   # Don't log any deprecations.
   config.active_support.report_deprecations = false
@@ -99,16 +99,16 @@ Rails.application.configure do
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
   
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
-    port:                 587,
-    domain:               'yourdomain.com',
-    user_name:            ENV['SMTP_USERNAME'],
-    password:             ENV['SMTP_PASSWORD'],
-    authentication:       'plain',
-    enable_starttls_auto: true,
-    open_timeout:         5,
-    read_timeout:         5
-  }
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   address:              'smtp.gmail.com',
+  #   port:                 587,
+  #   domain:               'yourdomain.com',
+  #   user_name:            ENV['SMTP_USERNAME'],
+  #   password:             ENV['SMTP_PASSWORD'],
+  #   authentication:       'plain',
+  #   enable_starttls_auto: true,
+  #   open_timeout:         5,
+  #   read_timeout:         5
+  # }
 end
