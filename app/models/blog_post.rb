@@ -13,6 +13,11 @@ class BlogPost < ApplicationRecord
     ["content", "created_at", "id", "image", "title", "updated_at"]
   end
 
+   def self.ransackable_associations(auth_object = nil)
+    ["image_attachment", "image_blob"]
+  end
+
+
   private
 
   def set_slug

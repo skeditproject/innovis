@@ -9,7 +9,7 @@
           <% if post.image.attached? %>
             <%= link_to image_tag(post.image.variant(resize_to_limit: [400, 300]), class: "service-card-img"), blog_path(post.slug) %>
           <% else %>
-            <%= link_to image_tag('default-image.jpg', class: "service-card-img"), blog_path(post.slug) %>
+            <%= link_to image_tag('count-1.jpg', class: "service-card-img"), blog_path(post.slug) %>
           <% end %>
         </div>
         <div class="service-card-heading">

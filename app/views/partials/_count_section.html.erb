@@ -1,12 +1,13 @@
 <% count_sections = CountSection.all %>
 <section class="count-section px-0">
   <div class="inner-count-div flex-wrap">
-    <% count_sections.each do |count| %>
+    <% count_sections.each_with_index do |count, index| %>
       <div>
         <% if count.image.attached? %>
           <%= image_tag count.image, style: 'max-width: 100px; max-height: 100px;' %>
         <% else %>
-          <%= image_tag 'count-1.png', style: 'max-width: 100px; max-height: 100px;' %>
+          <% default_image = "count-#{(index % 4) + 1}.png" %>
+          <%= image_tag default_image, style: 'max-width: 100px; max-height: 100px;' %>
         <% end %>
         <div class="count-number"><%= count.number %></div>
         <div class="count-text"><%= count.text %></div>
