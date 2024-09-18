@@ -42,7 +42,7 @@ ActiveAdmin.register BlogPost do
       row :slug
       row :image do |post|
         if post.image.attached?
-          image_tag(post.image.variant(resize_to_limit: [200, 200]), class: 'img-thumbnail')
+          image_tag(post.image, class: 'img-thumbnail')
         else
           content_tag(:span, 'No image uploaded')
         end
