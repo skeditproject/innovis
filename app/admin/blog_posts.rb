@@ -28,9 +28,8 @@ ActiveAdmin.register BlogPost do
       if f.object.new_record?
         f.input :image, as: :file
       else
-        f.input :image, as: :file, hint: f.object.image.attached? ? image_tag(f.object.image.variant(resize_to_limit: [100, 100]), style: 'max-width: 100px; max-height: 100px;') : content_tag(:span, 'No image uploaded')
+        f.input :image, as: :file, hint: f.object.image.attached? ? image_tag(f.object.image, style: 'max-width: 100px; max-height: 100px;') : content_tag(:span, 'No image uploaded')
       end
-      # f.input :image, as: :file, hint: f.object.image.attached? ? image_tag(f.object.image.variant(resize_to_limit: [100, 100])) : content_tag(:span, 'No image uploaded')
     end
     f.actions
   end

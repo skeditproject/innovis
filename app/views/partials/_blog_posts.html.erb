@@ -7,7 +7,7 @@
       <div class="service-card-div">
         <div class="overflow-hidden service-img-parent">
           <% if post.image.attached? %>
-            <%= link_to image_tag(post.image.variant(resize_to_limit: [400, 300]), class: "service-card-img"), blog_path(post.slug) %>
+            <%= link_to image_tag(post.image, class: "service-card-img"), blog_path(post.slug) %>
           <% else %>
           <%= image_tag("service-7.png", class: "service-card-img") %>
           <% end %>
