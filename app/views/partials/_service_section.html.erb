@@ -4,10 +4,14 @@
     <div>We cater all the major verticals</div>
   </div>
   <div class="service-card-container landing-page">
-    <% Service.all.limit(8).each do |service| %>
+    <% Service.all.limit(8).order(:id).each do |service| %>
       <div class="service-card-div">
         <div class="overflow-hidden service-img-parent">
-          <%= link_to image_tag(service.image, class: "service-card-img"), service_path(service.slug) %>
+          <% if service.image.attached? %>
+            <%= link_to image_tag(service.image, class: "service-card-img"), service_path(service.slug) %>
+          <% else %>
+            "No Image"
+          <% end %>
         </div>
         <div class="service-card-heading">
           <%= link_to service.title, service_path(service.slug) %>

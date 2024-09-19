@@ -20,6 +20,7 @@ class BlogPost < ApplicationRecord
 
   private
 
+
   def set_slug
     self.slug = title.parameterize if title.present?
   end

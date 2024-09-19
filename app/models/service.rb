@@ -1,5 +1,7 @@
 class Service < ApplicationRecord
 
+  has_one_attached :image
+
   extend FriendlyId
   friendly_id :slug, use: [:slugged, :finders]
 
