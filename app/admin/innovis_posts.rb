@@ -1,29 +1,12 @@
-ActiveAdmin.register BlogPost do
-  permit_params :title, :content, :image, :slug
+ActiveAdmin.register InnovisPost do
+  permit_params :title, :content, :section_key, :image
 
-  index do
-    selectable_column
-    id_column
-    column :title
-    column :slug
-    column :content do |post|
-      truncate(strip_tags(post.content), length: 100)
-    end
-
-    column :image do |post|
-      if post.image.attached?
-        image_tag(post.image, style: 'width: 100px; height: 100px; object-fit: cover;')
-      else
-        content_tag(:span, 'No image')
-      end
-    end
-    actions
-  end
+  filter :title
 
   form do |f|
-    f.inputs 'Blog Post Details' do
+    f.inputs 'Innovis Post' do
       f.input :title
-      f.input :slug
+      f.input :section_key
       f.input :content, as: :quill_editor
       if f.object.new_record?
         f.input :image, as: :file
@@ -37,16 +20,32 @@ ActiveAdmin.register BlogPost do
   show do
     attributes_table do
       row :title
-      row :content
-      row :slug
+      row :section_key
+      row :content do |post|
+        post.content.html_safe
+      end
       row :image do |post|
         if post.image.attached?
           image_tag(post.image, class: 'img-thumbnail',style: 'max-width: 100px; max-height: 100px;')
         else
           content_tag(:span, 'No image uploaded')
         end
-      end      
+      end
     end
   end
-  filter :title
+
+  index do
+    selectable_column
+    id_column
+    column :title
+    column :section_key
+    column :image do |post|
+      if post.image.attached?
+        image_tag url_for(post.image), class: 'admin-thumb-img', style: 'max-width: 100px; max-height: 100px;'
+      else
+        "No Image"
+      end
+    end
+    actions
+  end
 end

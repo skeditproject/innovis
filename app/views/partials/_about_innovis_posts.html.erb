@@ -1,35 +1,42 @@
 <section class="py-5 bg-light mt-4">
   <div class="container">
     <div class="text-center mb-5">
-      <h2 class="display-4 font-weight-bold text-dark">Our Team</h2>
+      <% team_section = InnovisPost.find_by(section_key: 'team_intro') %>
+      <h2 class="display-4 font-weight-bold text-dark"><%= team_section&.title %></h2>
       <p class="text-muted mt-3 mx-auto" style="max-width: 800px;">
-        Our team is made up of experienced Advocates and driven Law graduates who desire to dispense reliable and timely developments taking place in the field of Law. We believe that great content is the result of collaboration, and we work together to deliver the best possible experience to our readers. We are committed to investing in our team's professional development and growth, and we are proud of their achievements and contributions to our success.
+        <%= team_section&.content.html_safe %>
       </p>
     </div>
 
     <div class="row mb-4">
       <div class="col-12 col-md-6 d-flex align-items-center mb-4 mb-md-0">
+        <% vision_section = InnovisPost.find_by(section_key: 'our_vision') %>
         <div class="w-100">
-          <h3 class="h3 font-weight-bold text-dark mb-3">Our Vision</h3>
+          <h3 class="h3 font-weight-bold text-dark mb-3"><%= vision_section&.title %></h3>
           <p class="text-muted">
-            At INNOVIS POSTS, our vision is to be the leading source of legal news and the latest developments in the domain of Law. We aim to create a community of engaged and informed readers who rely on us for the latest legal news, trends, and insights. We believe that our content has the power to educate, inspire, and entertain, and we are committed to delivering the best possible experience to our readers.
+            <%= vision_section&.content.html_safe %>
           </p>
         </div>
       </div>
       <div class="col-12 col-md-6 d-flex justify-content-center">
-        <img src="<%= image_path('cr=w_600,h_300.webp') %>" alt="Vision Image" class="img-fluid rounded">
+        <% if vision_section&.image.attached? %>
+          <%= image_tag vision_section.image, alt: "Vision Image", class: "img-fluid rounded" %>
+        <% end %>
       </div>
     </div>
 
     <div class="row mb-4">
       <div class="col-12 col-md-6 d-flex justify-content-center">
-        <img src="<%= image_path('rs=w_600,h_300,cg_true.webp') %>" alt="Content Image" class="img-fluid rounded">
+        <% content_section = InnovisPost.find_by(section_key: 'our_content') %>
+        <% if content_section&.image.attached? %>
+          <%= image_tag content_section.image, alt: "Content Image", class: "img-fluid rounded" %>
+        <% end %>
       </div>
       <div class="col-12 col-md-6 d-flex align-items-center">
         <div class="w-100">
-          <h3 class="h3 font-weight-bold text-dark mb-3">Our Content</h3>
+          <h3 class="h3 font-weight-bold text-dark mb-3"><%= content_section&.title %></h3>
           <p class="text-muted">
-            At INNOVIS POSTS, we strive to provide our readers with high-quality content that is both informative and engaging. We evaluate the developments in the field of Law with a specific focus on their impacts on business, corporations, finance, startups, and individual citizens. Our content is designed to inform, educate, and inspire, and we are always looking for new and innovative ways to engage with our readers.
+            <%= content_section&.content.html_safe %>
           </p>
         </div>
       </div>

@@ -969,3 +969,32 @@ video::-webkit-media-controls {
     max-width: 100%;
   }
 }
+
+.card:hover {
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+.card-img-top img {
+  object-fit: cover;
+  height: 200px;
+  width: 100%;
+}
+
+.card-title {
+  font-size: 1.25rem;
+}
+
+.card-body p {
+  font-size: 0.95rem;
+}
+
+.card-body {
+  padding: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .card {
+    height: 100%;
+  }
+}

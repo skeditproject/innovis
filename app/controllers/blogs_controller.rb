@@ -12,7 +12,6 @@ class BlogsController < ApplicationController
   end
 
   def send_message
-    # binding.break
     @contact = Contact.new(contact_params)
 
     if @contact.save 
