@@ -7,7 +7,7 @@ class BlogPost < ApplicationRecord
   validates :title, :slug, presence: true, uniqueness: true
   validates :content, presence: true
 
-  has_one_attached :image
+  has_one_attached :image,service: :local
 
   def self.ransackable_attributes(auth_object = nil)
     ["content", "created_at", "id", "image", "title", "updated_at"]
