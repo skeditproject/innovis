@@ -6,3 +6,5 @@ bundle install
 # bundle exec rails generate camaleon_cms:install
 # bundle exec rails camaleon_cms:generate_migrations
 bundle exec rails db:migrate
+bundle exec rails db:seed
+
