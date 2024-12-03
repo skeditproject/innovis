@@ -1,7 +1,7 @@
-<% header = Header.first %>
+<% header = Header.first || Header.new(title: 'Default Title', subtitle: 'Default Subtitle', description: 'Default Description') %>
 <section class="header-section px-0">
   <video autoplay loop muted playsinline preload="auto" class="header-video">
-    <% if header.video.attached? %>
+    <% if header.video&.attached? %>
       <source type="video/mp4" src="<%= url_for(header.video) %>">
     <% else %>
       <source type="video/mp4" src="<%= asset_path('header-law.mp4') %>">
